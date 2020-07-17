@@ -6,4 +6,5 @@ edition = "2018"
 [dependencies]
 rusoto_core = "0.36.0"
 rusoto_datapipeline = "0.36.0"
+rusoto_ce = "0.36.0"
 rusoto_credential = "0.15.0"

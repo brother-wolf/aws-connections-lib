@@ -16,7 +16,7 @@ pub fn get_client(aws_profile: &str, region: &str) -> Option<CloudWatchClient> {
                 match _profile_provider {
                     Ok(mut _prov) => {
                         _prov.set_profile(aws_profile);
-                        Some(CloudwatchClient::new_with(HttpClient::new().expect("failed to create request dispatcher"), _prov, aws_region))
+                        Some(CloudWatchClient::new_with(HttpClient::new().expect("failed to create request dispatcher"), _prov, aws_region))
                     },
                     Err(_e) => {
                         println!("error in getting profile provider: {:?}", _e);

@@ -1,6 +1,6 @@
 use std::str::FromStr;
 
-use rusoto_core::{Client, HttpClient, Region};
+use rusoto_core::{HttpClient, Region};
 use rusoto_credential::{ChainProvider, CredentialsError, ProfileProvider};
 use rusoto_es::EsClient;
 

@@ -1,22 +1,22 @@
 use std::str::FromStr;
 
-use rusoto_core::{HttpClient, Region};
+use rusoto_core::{Client, HttpClient, Region};
 use rusoto_credential::{ChainProvider, CredentialsError, ProfileProvider};
-use rusoto_datapipeline::DataPipelineClient;
+use rusoto_ec2::Ec2Client;
 
-pub fn get_client(aws_profile: &str, region: &str) -> Option<DataPipelineClient> {
+pub fn get_client(aws_profile: &str, region: &str) -> Option<Ec2Client> {
 
     match Region::from_str(region) {
         Ok(aws_region) => {
             if aws_profile.is_empty() {
                 ChainProvider::new();
-                Some(DataPipelineClient::new(aws_region))
+                Some(Ec2Client::new(aws_region))
             } else {
-                let _profile_provider: Result<ProfileProvider,CredentialsError> = ProfileProvider::new();
+                let _profile_provider: Result<ProfileProvider, CredentialsError> = ProfileProvider::new();
                 match _profile_provider {
                     Ok(mut _prov) => {
                         _prov.set_profile(aws_profile);
-                        Some(DataPipelineClient::new_with(HttpClient::new().expect("failed to create request dispatcher"), _prov, aws_region))
+                        Some(Ec2Client::new_with(HttpClient::new().expect("failed to create request dispatcher"), _prov, aws_region))
                     },
                     Err(_e) => {
                         println!("error in getting profile provider: {:?}", _e);
@@ -26,6 +26,5 @@ pub fn get_client(aws_profile: &str, region: &str) -> Option<DataPipelineClient>
             }
         },
         Err(_e) => None,
-    }   
+    }
 }
-

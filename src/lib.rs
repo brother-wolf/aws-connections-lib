@@ -1,2 +1,14 @@
+pub mod cloudwatch;
 pub mod cost_explorer;
 pub mod datapipelines;
+pub mod ec2;
+pub mod emr;
+pub mod es;
+pub mod kinesis;
+pub mod lambda;
+pub mod rds;
+pub mod route53;
+pub mod s3;
+pub mod secrets_manager;
+pub mod sqs;
+pub mod sns;

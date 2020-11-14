@@ -12,3 +12,4 @@ pub mod s3;
 pub mod secrets_manager;
 pub mod sqs;
 pub mod sns;
+pub mod client_error;

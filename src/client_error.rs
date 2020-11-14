@@ -1,6 +1,6 @@
 #[derive(Debug, PartialEq)]
 pub struct ClientError {
-    message: String,
+    pub message: String,
 }
 
 impl ClientError {
